@@ -1,10 +1,11 @@
+/** Level 9 class which contains all the methods needed */
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.*;
 import java.io.FileWriter;
-public class Level7 {
+public class Level9 {
     public static void main(String[] args) throws IOException {
         String input;
         ArrayList<Task> task = new ArrayList<Task>();
@@ -17,7 +18,7 @@ public class Level7 {
         System.out.println(" What can I do for you?\n");
         System.out.println("____________________________________________________________\n");
         if(sc.hasNextLine()){
-        input=sc.nextLine();}
+            input=sc.nextLine();}
         else {
             input=in.nextLine();
         }
@@ -26,8 +27,16 @@ public class Level7 {
                 if (input.equals("list")) {
                     System.out.println("____________________________________________________________\n");
                     for (int i = 0; i < task.size(); i++) {
+                        if(task.get(i) instanceof Deadline){
+                            System.out.println((i + 1) + ":"  + (Deadline)task.get(i));
+                        }
+                        if(task.get(i) instanceof Event){
+                            System.out.println((i + 1) + ":"  + (Event)task.get(i));
+                        }
+                        if(task.get(i) instanceof Todo){
+                            System.out.println((i + 1) + ":"  + (Todo)task.get(i));
+                        }
 
-                        System.out.println((i + 1) + ":" + "[" + task.get(i).getStatusIcon() + "] " + task.get(i).description);
                     }
                     System.out.println("____________________________________________________________\n");
                 } else if (input.startsWith("done")) {
@@ -44,7 +53,7 @@ public class Level7 {
                     System.out.println("Got it. I've added this task: ");
                     System.out.println("   " + todo.toString());
 
-                    System.out.println("Now you have " + task.size() + " todo borrow booktasks in the list. ");
+                    System.out.println("Now you have " + task.size() + " tasks in the list. ");
                     System.out.println("____________________________________________________________\n");
 
 
@@ -58,8 +67,24 @@ public class Level7 {
                     System.out.println(" " + "[" + task.get(taskNumberdeleted).getStatusIcon() + "] " + task.get(taskNumberdeleted).description);
                     task.remove(taskNumberdeleted);
 
-                    System.out.println("Now you have " + task.size() + " todo borrow booktasks in the list. ");
+                    System.out.println("Now you have " + task.size() + " tasks in the list. ");
                     System.out.println("____________________________________________________________\n");}
+                else if (input.startsWith("find")){
+                    System.out.println("____________________________________________________________\n");
+                    System.out.println("Here are the matching tasks in your list:\n");
+                    String keyword = input.substring(4);
+                    int count = 1;
+                    for(int i=0;i< task.size();i++){
+                        if(task.get(i).description.contains(keyword)){
+
+                            System.out.println(count +": " + task.get(i));
+                            count ++;
+                        }
+
+                    }
+
+                    System.out.println("____________________________________________________________\n");
+                }
                 else if (input.startsWith("deadline")) {
                     String descriptionOfDeadline;
                     String by;
@@ -71,9 +96,10 @@ public class Level7 {
                     System.out.println("Got it. I've added this task: ");
                     System.out.println("   " + ddl.toString());
 
-                    System.out.println("Now you have " + task.size() + " todo borrow booktasks in the list. ");
+                    System.out.println("Now you have " + task.size() + " tasks in the list. ");
                     System.out.println("____________________________________________________________\n");
-                } else if (input.startsWith("event")) {
+                }
+                else if (input.startsWith("event")) {
                     String descriptionOfevent;
                     String at;
                     descriptionOfevent = input.substring(6, (input.indexOf("/") - 1));
@@ -84,7 +110,7 @@ public class Level7 {
                     System.out.println("Got it. I've added this task: ");
                     System.out.println("   " + event.toString());
 
-                    System.out.println("Now you have " + task.size() + " todo borrow booktasks in the list. ");
+                    System.out.println("Now you have " + task.size() + " tasks in the list. ");
                     System.out.println("____________________________________________________________\n");
                 }
                 else{
@@ -120,7 +146,7 @@ public class Level7 {
 
         }
         for (int i = 0; i < task.size(); i++) {
-                if(task.get(i) instanceof Deadline){
+            if(task.get(i) instanceof Deadline){
                 writer.write("deadline " +task.get(i).description);}
             if(task.get(i) instanceof Event){
                 writer.write("event " +task.get(i).description);}
