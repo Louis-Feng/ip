@@ -11,7 +11,7 @@ public class Find extends Command {
     }
     //implement method to find keywords
     public ArrayList<Task> performCommand(){
-        keyword = this.command.substring(4); // to get the keyword string
+        keyword = this.command.substring(5); // to get the keyword string
         int count = 1;
         /*iterate the task arrayList to find corresponding items*/
         for(int i=0;i< task.size();i++){
