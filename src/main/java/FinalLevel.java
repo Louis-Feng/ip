@@ -8,7 +8,7 @@ import java.util.*;
 public class FinalLevel {
     public static String input; //input is for each statement input
     public static ArrayList<Task> task = new ArrayList<Task>(); // create an arrayList to store tasks
-    public static File data = new File("D:\\ip\\src\\main\\data\\duke.txt"); //Create file object
+    public static File data = new File("src\\main\\data\\duke.txt"); //Create file object
     public static FileOutputStream fos;
     /* load data from txt file*/
     static {
@@ -162,10 +162,11 @@ public class FinalLevel {
 
     /** method to write the list into a text file after "bye" statement*/
     public static void write(ArrayList<Task> task, File data) throws IOException {
-        FileWriter writer = new FileWriter(data,true); //set append attribute to true so that it won't overwrite the file.
+        FileWriter writer = new FileWriter(data,false); //set append attribute to true so that it won't overwrite the file.
         writer.write("\n"); // print a new line
         for (int i = 0; i < task.size(); i++) {
             if(task.get(i) instanceof Deadline){
+
                 writer.write("deadline " +(task.get(i)).toString() + "\n"); // print a deadline task
             }
             if(task.get(i) instanceof Event){
