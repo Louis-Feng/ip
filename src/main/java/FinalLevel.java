@@ -3,12 +3,14 @@
 import java.io.*;
 import java.util.Scanner;
 import java.util.ArrayList;
+import java.io.File;
 import java.util.*;
 /** FinalLevel class which contains all the methods needed */
 public class FinalLevel {
     public static String input; //input is for each statement input
     public static ArrayList<Task> task = new ArrayList<Task>(); // create an arrayList to store tasks
-    public static File data = new File("src\\main\\data\\duke.txt"); //Create file object
+    public static File data = new File("duke.txt"); //Create file object
+
     public static FileOutputStream fos;
     /* load data from txt file*/
     static {
@@ -33,6 +35,9 @@ public class FinalLevel {
     public static Scanner sc=new Scanner(fis);
 
     public static void main(String[] args) throws IOException {
+        if(data.exists()==false){
+            data.createNewFile();
+        }
         greet(); // call greet() method to greet
         input = getNextStatement(); // get the input statement to execute.
         /* mainly to execute input statements*/
