@@ -1,2 +1,2 @@
 deadline [D][✘] finish homework (by:  today)
-todo [T][✘] read book
+event [E][✘] tut (at:  9pm)

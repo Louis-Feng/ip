@@ -41,28 +41,18 @@ public class FinalLevel {
                 /** print the list of tasks*/
                 if (input.equals("list")) {
                     System.out.println("____________________________________________________________\n");
-                    /* iterate the task arrayList to print each task*/
-                    for (int i = 0; i < task.size(); i++) {
-                        if(task.get(i) instanceof Deadline){
-                            System.out.println((i + 1) + ":"  + (Deadline)task.get(i)); // print deadline task in its format
-                        }
-                        if(task.get(i) instanceof Event){
-                            System.out.println((i + 1) + ":"  + (Event)task.get(i)); // print event task in its format
-                        }
-                        if(task.get(i) instanceof Todo){
-                            System.out.println((i + 1) + ":"  + (Todo)task.get(i)); // print todo task in its format
-                        }
-
-                    }
+                    List list = new List(input,task); //create a new List object
+                    task = list.performCommand(); //call performCommand() on list
                     System.out.println("____________________________________________________________\n");
                 }
                 /** mark one task as done */
                 else if (input.startsWith("done")) {
                     System.out.println("____________________________________________________________\n");
                     int taskNumberCompleted = Integer.parseInt(input.replaceAll("\\D+", "")) - 1; //find the corresponding index of done task
-                    task.set(taskNumberCompleted, task.get(taskNumberCompleted).completeTask()); // set the corresponding task as done
+                    Done done = new Done(input,task); //create a new Done object
+                    task = done.performCommand();   //call performCommand on done
                     System.out.println(" Nice! I've marked this task as done:");
-                    System.out.println(" "  + "[" + task.get(taskNumberCompleted).getStatusIcon() + "] " + task.get(taskNumberCompleted).description);
+                    System.out.println(" " + task.get(taskNumberCompleted));
                     System.out.println("____________________________________________________________\n");
                 }
                 /** delete one task */
@@ -71,22 +61,16 @@ public class FinalLevel {
                     System.out.println("Noted. I've removed this task:  ");
                     int taskNumberdeleted = Integer.parseInt(input.replaceAll("\\D+", "")) - 1; //find the corresponding index of task to be deleted
                     System.out.println(" " + "[" + task.get(taskNumberdeleted).getStatusIcon() + "] " + task.get(taskNumberdeleted).description);
-                    task.remove(taskNumberdeleted); //remove that task from arrayList
+                    Delete delete = new Delete(input,task);//create a new Delete object
+                    task = delete.performCommand(); //call performCommand on delete
                     System.out.println("Now you have " + task.size() + " tasks in the list. ");
                     System.out.println("____________________________________________________________\n");}
                 /** to find tasks containing a certain keyword*/
                 else if (input.startsWith("find")){
                     System.out.println("____________________________________________________________\n");
                     System.out.println("Here are the matching tasks in your list:\n");
-                    String keyword = input.substring(4); // to get the keyword string
-                    int count = 1;
-                    /*iterate the task arrayList to find corresponding items*/
-                    for(int i=0;i< task.size();i++){
-                        if(task.get(i).description.contains(keyword)){
-                            System.out.println(count +": " + task.get(i));
-                            count ++;
-                        }
-                    }
+                    Find find = new Find(input,task);   //create a new Find object
+                    task = find.performCommand(); //call performCommand on find
                     System.out.println("____________________________________________________________\n");
                 }
                 /** add a todo task*/
@@ -163,7 +147,6 @@ public class FinalLevel {
     /** method to write the list into a text file after "bye" statement*/
     public static void write(ArrayList<Task> task, File data) throws IOException {
         FileWriter writer = new FileWriter(data,false); //set append attribute to true so that it won't overwrite the file.
-        writer.write("\n"); // print a new line
         for (int i = 0; i < task.size(); i++) {
             if(task.get(i) instanceof Deadline){
 
