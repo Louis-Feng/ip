@@ -1,5 +1,8 @@
 
-/** todo class extends Task */
+/**
+ * Represents a Todo which extends Task class. A <code>Todo</code> object corresponds to
+ * a Todo represented by two Strings
+ */
 public class Todo extends Task {
 
     public Todo(String description) {

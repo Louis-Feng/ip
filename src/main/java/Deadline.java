@@ -1,4 +1,7 @@
-/** deadline class extends Task */
+/**
+ * Represents a Deadline which extends Task class. A <code>Deadline</code> object corresponds to
+ * a Deadline represented by two Strings
+ */
 public class Deadline extends Task {
 
     protected String by;

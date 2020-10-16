@@ -1,6 +1,9 @@
 import java.util.ArrayList;
-/** Find class is the subclass of Command class
- * its main method is to find the occurrence of a keyword and print the task containing the keyword*/
+/**
+ * Represents a Find which extends Command class. A <code>Find</code> object corresponds to
+ * a Find represented by two Strings
+ * its main method is to find the occurrence of a keyword and print the task containing the keyword
+*/
 public class Find extends Command {
     public String keyword;
     /** constructor*/
@@ -9,7 +12,11 @@ public class Find extends Command {
 
 
     }
-    //implement method to find keywords
+    /**
+     * implements performCommand() to find all tasks from ArrayList<Task>
+     *     containing the keyword
+     * @return ArrayList<Task> an ArrayList of Tasks.
+     */
     public ArrayList<Task> performCommand(){
         keyword = this.command.substring(5); // to get the keyword string
         int count = 1;

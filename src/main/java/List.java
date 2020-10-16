@@ -1,5 +1,7 @@
 import java.util.ArrayList;
-/** List class is the subclass of Command class
+/**
+ * Represents a List which extends Command class. A <code>List</code> object corresponds to
+ * a List represented by Two String
  * its main method is to iterate the whole task ArrayList to print out every statement*/
 public class List extends Command {
     /** constructor*/
@@ -7,7 +9,11 @@ public class List extends Command {
         super(command,task);
 
     }
-    //implement method to print all tasks
+    /**
+     * implements performCommand() to iterate all the tasks from ArrayList<Task>
+     *     and print them
+     * @return ArrayList<Task> an ArrayList of Tasks.
+     */
     public ArrayList<Task> performCommand() {
         for (int i = 0; i < task.size(); i++) {
             if (task.get(i) instanceof Deadline) {

@@ -1,4 +1,7 @@
-/** parent class Task */
+/**
+ * Represents a Task . A <code>Task</code> object corresponds to
+ * a Task represented by a String and a boolean value
+ */
 public class Task {
     protected String description;
     protected boolean isDone;
