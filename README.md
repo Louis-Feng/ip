@@ -29,7 +29,7 @@ output:
 	3:[T][✘] read book
 	____________________________________________________________
 ```
-### 2.  done :mark a task as done
+### 2.  done : mark a task as done
 #### command: done (number)
 output :
 ```
@@ -39,7 +39,7 @@ output :
  	[D][✓] finish homework (by:  today)
 	____________________________________________________________
 ```
-### 3. todo :(things to do) create a todo task
+### 3. todo : (things to do) create a todo task
 #### command: todo (task)
 output : 
 ```
@@ -61,7 +61,7 @@ output :
 	Now you have 2 tasks in the list. 
 	____________________________________________________________
 ```
-### 5. find (keyword) find all the tasks containing this keyword
+### 5. find ：find all the tasks containing this keyword
 #### command: find (keyword)
 output :
 ```       
@@ -94,7 +94,7 @@ output :
 	Now you have 2 tasks in the list. 
 	____________________________________________________________
 ```
-### 8. bye  quit the program and save the task into a text file "duke.txt"
+### 8. bye ： quit the program and save the task into a text file "duke.txt"
 #### command: bye
 output : 
 ```	
